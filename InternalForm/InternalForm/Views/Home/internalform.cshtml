@@ -1,0 +1,361 @@
+﻿
+@{
+    ViewBag.Title = "internalform";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" integrity="sha256-xqxV4FDj5tslOz6MV13pdnXgf63lJwViadn//ciKmIs=" crossorigin="anonymous" />
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<style>
+    .section1 {
+        background-color: Highlight;
+        color: white;
+    }
+</style>
+<div class="card">
+    <div class="card-header">form</div>
+    <div class="card-body">
+
+        <table class="table table-bordered">
+            <tr>
+                <th>position applying </th>
+                <td> <input type="text" class="position" name="position" id="position" value=""></td>
+            </tr>
+            <tr>
+                <th>Manager</th>
+                <td>
+                    @Html.DropDownList("Txtmanager", (IEnumerable<SelectListItem>)ViewBag.Employees, "select", new { @class = "form-control select2 col-lg-12" })
+                </td>
+            </tr>
+            <tr>
+                <th>Date started</th>
+                <td><input type="text" id="datepicker"></td>
+            </tr>
+
+        </table>
+
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr><th colspan="2">Education</th></tr>
+
+
+            </thead>
+
+            <tr>
+                <th>Name</th>
+                <td>  <input type="text" size="55" id="customFields_name" class="highName" name="highName" value=""></td>
+            </tr>
+            <tr>
+                <th>Major course or subject</th>
+                <td>  <input type="text" size="55" id="customFields_name" class="majorname" name="majorname" value=""></td>
+            </tr>
+            <tr>
+                <th>Last year completed</th>
+                <td><input type="text" size="55" id="customFields_name" class="majorname" name="majorname" value=""></td>
+            </tr>
+            <tr>
+                <th>Graduated?</th>
+                <td>
+                    <input type="radio" class="YesFlag" name="college_gratuated_flag_1" value="Yes"> Yes
+                    <input type="radio" class="NoFlag" name="college_gratuated_flag_1" value="No"> No
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Yes when -  Month/Year:
+                    <input type="text" size="20" id="startDate" class="gratuated_college" name="gratuated_college_1" value="">
+                </td>
+            </tr>
+            <tr>
+                <th>degree?</th>
+                <td><input type="text" size="40" class="college_degree" name="college_degree_1" id="customFieldName" value=""></td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered" id="customFields">
+
+
+
+
+            <tbody>
+                <tr valign="top">
+                    <th class="section1" colspan="5"><label for="customFieldName">College</label></th>
+                </tr>
+                <tr>
+                    <th width="12%">   Name:</th>
+                    <td width="33%" class="lastitem">
+                        <input type="text" size="40" class="college_name" name="college_name_1" id="customFieldName" value="">
+
+                        <span style="float:right">   <a href="javascript:void(0);" class="addCF">Add Another College/School</a> </span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%">Major Course or Subject:</th>
+                    <td width="33%">
+                        <input type="text" size="40" class="college_course" name="college_course_1" id="customFieldName" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%">Last Year Completed:</th>
+                    <td width="33%">
+                        <input type="text" size="10" class="college_gratuated" name="college_gratuated_1" id="customFieldName" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%">Graduated?</th>
+                    <td width="33%">
+                        <input type="radio" class="YesFlag" name="college_gratuated_flag_1" value="Yes"> Yes
+                        <input type="radio" class="NoFlag" name="college_gratuated_flag_1" value="No"> No
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Yes when -  Month/Year:
+                        <input type="text" size="20" id="startDate" class="gratuated_college" name="gratuated_college_1" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%">Degree:</th>
+                    <td width="33%">
+                        <input type="text" size="40" class="college_degree" name="college_degree_1" id="customFieldName" value="">
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <table class="table table-sm table-bordered" id="customFields_lan">
+            <thead>
+                <tr>
+                    <th class="section1" colspan="2">Languages</th>
+                </tr>
+            </thead>
+            <cfset language_arr=ListToArray(form.language)>
+
+                <tbody>
+                    <cfif i EQ 1>
+                        <tr>
+                            <th colspan="2">
+                                List Any Foreign Language(s) and check the boxes that describe your skills:
+
+                                <span style="float:right">   <a href="javascript:void(0);" class="addCF2">Add Language</a> </span>
+
+                            </th>
+                        </tr>
+                    </cfif>
+                    <tr>
+                        <td width="25%">
+                            <input type="text" size="25" name="language_1" value="">
+                        </td>
+                        <td>
+                            <input type="checkbox" class="Speak_lan" name="Speak_lan_1" value="Speak"> Speak
+                            <input type="checkbox" class="Read_lan" name="Read_lan_1" value="Read"> Read
+                            <input type="checkbox" class="Write_lan" name="Write_lan_1" value="Write"> Write
+                        </td>
+                    </tr>
+                </tbody>
+
+        </table>
+
+        <br>
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th class="section1" colspan="5">Other</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <th colspan="5" width="33%">List any other skills, experience or knowledge you have relating to the position applied for:</th>
+                </tr>
+                <tr>
+                    <td width="33%">
+                        <textarea rows="5" cols="140" name="training_comments"></textarea>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <br>
+        <h2>Employment History:</h2>
+
+        <table class="table table-bordered table-sm" id="customFields_emp">
+
+
+
+
+
+
+
+            <thead>
+
+            </thead>
+            <tbody>
+                <tr valign="top">
+                    <th class="section1" colspan="5"><label for="customFieldName3">Company</label></th>
+                </tr>
+
+                <tr>
+                    <th width="12%">Name:</th>
+                    <td width="33%" class="lastitem">
+                        <input type="text" size="55" class="employement_name" name="employement_name_1" id="customFields_name" value="">
+                        <cfif i EQ 1>
+                            <cfif NOT isDefined("form.SubmitFlag")>
+                                <span style="float:right">   <a href="javascript:void(0);" class="companyCF3">Add Company</a> </span>
+                            </cfif>
+                        </cfif>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%">Address:</th>
+                    <td width="33%">
+                        <input type="text" size="55" class="employment_address" name="employment_address_1" id="customFields_name" value="">
+
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%">Dates of Employement:</th>
+                    <td width="33%">
+                        <input type="text" size="20" id="customFields_name" class="employement_date_from" name="employement_date_from_1" value="" />
+                        &nbsp;&nbsp;To: &nbsp;&nbsp;
+                        <input type="text" size="20" id="customFields_name" class="employement_date_to" name="employement_date_to_1" value="" />
+
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th nowrap width="12%">Your Title and Department</th>
+                    <td width="33%">
+                        <input type="text" size="55" id="customFields_name" class="employement_title" name="employement_title_1" value="">
+
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%">Describe your Duties:</th>
+                    <td width="33%">
+                        <textarea rows="5" cols="90" id="customFields_name" class="employemnt_duties" name="employemnt_duties_1"></textarea>
+
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <h2>Additional Notes:</h2>
+        <textarea rows="5" cols="130" name="additional_notes"> </textarea>
+        <br><br>
+        <input type="checkbox" id="last_check" name="last_check" value="1"> <span style="background-color: #FFFF00;font-weight: bold;">cant submit without checking this.</span>
+
+        <br>
+        <br />
+        <input type="submit" name="Submit" value="Submit" onclick=" return validateForm()">
+
+
+    </div>
+
+</div>
+
+@section scripts {
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".select2").select2({
+                placeholder: 'Select Name'
+            });
+
+        });
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+
+
+        $(document).ready(function () {
+            //for the college
+            $(".addCF").click(function () {
+                // alert('test');
+                var firstRow = $("#customFields > tbody:first");
+                $("#customFields").append('<tbody>' + firstRow.html() + '</tbody>');
+                //Process data
+                $("#customFields > tbody:last").find('.addCF').remove();
+                //Add remove
+                $("#customFields > tbody:last").find('.lastitem').append('<span style="float:right"> <a href="javascript:void(0);" class="remCF">Remove</a></span>');
+
+                var position = parseInt($("#totalCollege").val()) + 1;
+                $("#customFields > tbody:last").find('.YesFlag').attr('name', 'college_gratuated_flag_' + position.toString());
+                $("#customFields > tbody:last").find('.NoFlag').attr('name', 'college_gratuated_flag_' + position.toString());
+                $("#customFields > tbody:last").find('.college_degree').attr('name', 'college_degree_' + position.toString());
+                $("#customFields > tbody:last").find('.gratuated_college').attr('name', 'gratuated_college_' + position.toString());
+                $("#customFields > tbody:last").find('.college_gratuated').attr('name', 'college_gratuated_' + position.toString());
+                $("#customFields > tbody:last").find('.college_course').attr('name', 'college_course_' + position.toString());
+                $("#customFields > tbody:last").find('.college_name').attr('name', 'college_name_' + position.toString());
+
+
+                $("#totalCollege").val(parseInt($("#totalCollege").val()) + 1);
+            });
+
+            $("#customFields").on('click', '.remCF', function () {
+                $(this).parent().parent().parent().parent().remove();
+                $("#totalCollege").val(parseInt($("#totalCollege").val()) - 1);
+            });
+
+
+
+
+
+
+            //for the company
+            $(".companyCF3").click(function () {
+                // var firstRow = $("#customFields_emp > tbody:first");
+
+                var firstRow = $("#customFields_emp > tbody:first").clone();
+                firstRow.find("textarea").text("");
+                $("#customFields_emp").append('<tbody>' + firstRow.html() + '</tbody>');
+                //Process data
+                $("#customFields_emp > tbody:last").find('.companyCF3').remove();
+
+
+                $("#customFields_emp > tbody:last").find('.lastitem').append('<span style="float:right">   <a href="javascript:void(0);" class="remCF3">Remove</a> </span>');
+
+                var position_emp = parseInt($("#totalEmployment").val()) + 1;
+                $("#customFields_emp > tbody:last").find('.employement_name').attr('name', 'employement_name_' + position_emp.toString());
+                $("#customFields_emp > tbody:last").find('.employment_address').attr('name', 'employment_address_' + position_emp.toString());
+                $("#customFields_emp > tbody:last").find('.employement_date_from').attr('name', 'employement_date_from_' + position_emp.toString());
+                $("#customFields_emp > tbody:last").find('.employement_date_to').attr('name', 'employement_date_to_' + position_emp.toString());
+                $("#customFields_emp > tbody:last").find('.employement_title').attr('name', 'employement_title_' + position_emp.toString());
+                $("#customFields_emp > tbody:last").find('.employemnt_duties').attr('name', 'employemnt_duties_' + position_emp.toString());
+
+
+
+                $("#totalEmployment").val(parseInt($("#totalEmployment").val()) + 1);
+            });
+            $("#customFields_emp").on('click', '.remCF3', function () {
+                $(this).parent().parent().parent().parent().remove();
+                $("#totalEmployment").val(parseInt($("#totalEmployment").val()) - 1);
+            });
+
+
+
+            //for the language
+            $(".addCF2").click(function () {
+                var position = parseInt($("#totalLanguage").val()) + 1;
+                $("#customFields_lan").append('<tbody><tr> <td  width="25%"> <input type="text"  size="25" name="language_' + position.toString() + '" value="" ></td><td > <input type="checkbox" name="Speak_lan_' + position.toString() + '" value="Speak"> Speak <input type="checkbox" name="Read_lan_' + position.toString() + '" value="Read"> Read<input type="checkbox" name="Write_lan_' + position.toString() + '" value="Write"> Write <span style="float:right"> <a href="javascript:void(0);" class="remCF2">Remove</a></span> </td></tbody>');
+
+                $("#totalLanguage").val(position);
+
+            });
+
+            $("#customFields_lan").on('click', '.remCF2', function () {
+                $(this).parent().parent().parent().parent().remove();
+                $("#totalLanguage").val(parseInt($("#totalLanguage").val()) - 1);
+            });
+
+        });
+
+
+    </script>
+}
+
+

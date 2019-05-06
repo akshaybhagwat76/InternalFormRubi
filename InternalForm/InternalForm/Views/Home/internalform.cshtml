@@ -1,13 +1,14 @@
 ﻿
 @{
-    ViewBag.Title = "internalform";
+    ViewBag.Title = "Internalform";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" integrity="sha256-xqxV4FDj5tslOz6MV13pdnXgf63lJwViadn//ciKmIs=" crossorigin="anonymous" />
-
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <style>
+
+
     .section1 {
         background-color: Highlight;
         color: white;
@@ -16,7 +17,6 @@
 <div class="card">
     <div class="card-header">form</div>
     <div class="card-body">
-
         <table class="table table-bordered">
             <tr>
                 <th>position applying </th>
@@ -32,48 +32,39 @@
                 <th>Date started</th>
                 <td><input type="text" id="datepicker"></td>
             </tr>
-
         </table>
-
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="tblEducation">
             <thead class="thead-light">
                 <tr><th colspan="2">Education</th></tr>
 
-
             </thead>
-
             <tr>
                 <th>Name</th>
-                <td>  <input type="text" size="55" id="customFields_name" class="highName" name="highName" value=""></td>
+                <td>  <input type="text" size="55" id="education_name" class="highName" name="highName" value=""></td>
             </tr>
             <tr>
                 <th>Major course or subject</th>
-                <td>  <input type="text" size="55" id="customFields_name" class="majorname" name="majorname" value=""></td>
+                <td>  <input type="text" size="55" id="education_subject" class="majorname" name="majorname" value=""></td>
             </tr>
             <tr>
                 <th>Last year completed</th>
-                <td><input type="text" size="55" id="customFields_name" class="majorname" name="majorname" value=""></td>
+                <td><input type="text" size="55" id="education_completed_year" class="majorname" name="majorname" value=""></td>
             </tr>
             <tr>
                 <th>Graduated?</th>
                 <td>
-                    <input type="radio" class="YesFlag" name="college_gratuated_flag_1" value="Yes"> Yes
-                    <input type="radio" class="NoFlag" name="college_gratuated_flag_1" value="No"> No
+                    <input type="radio" class="YesFlag" name="education_gratuated_flag" value="Yes"> Yes
+                    <input type="radio" class="NoFlag" name="education_gratuated_flag" value="No"> No
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Yes when -  Month/Year:
-                    <input type="text" size="20" id="startDate" class="gratuated_college" name="gratuated_college_1" value="">
+                    <input type="text" size="20" id="education_gratuated_startdate" class="gratuated_college" name="education_gratuated_startdate" value="">
                 </td>
             </tr>
             <tr>
                 <th>degree?</th>
-                <td><input type="text" size="40" class="college_degree" name="college_degree_1" id="customFieldName" value=""></td>
+                <td><input type="text" size="40" class="college_degree" name="education_degree" id="education_degree" value=""></td>
             </tr>
         </table>
-
         <table class="table table-bordered" id="customFields">
-
-
-
-
             <tbody>
                 <tr valign="top">
                     <th class="section1" colspan="5"><label for="customFieldName">College</label></th>
@@ -82,9 +73,7 @@
                     <th width="12%">   Name:</th>
                     <td width="33%" class="lastitem">
                         <input type="text" size="40" class="college_name" name="college_name_1" id="customFieldName" value="">
-
                         <span style="float:right">   <a href="javascript:void(0);" class="addCF">Add Another College/School</a> </span>
-
                     </td>
                 </tr>
                 <tr>
@@ -103,7 +92,7 @@
                     <th width="12%">Graduated?</th>
                     <td width="33%">
                         <input type="radio" class="YesFlag" name="college_gratuated_flag_1" value="Yes"> Yes
-                        <input type="radio" class="NoFlag" name="college_gratuated_flag_1" value="No"> No
+                        <input type="radio" class="NoFlag" name="college_gratuated_flag_1" value=" No"> No
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Yes when -  Month/Year:
                         <input type="text" size="20" id="startDate" class="gratuated_college" name="gratuated_college_1" value="">
                     </td>
@@ -115,9 +104,7 @@
                     </td>
                 </tr>
             </tbody>
-
         </table>
-
         <table class="table table-sm table-bordered" id="customFields_lan">
             <thead>
                 <tr>
@@ -125,7 +112,6 @@
                 </tr>
             </thead>
             <cfset language_arr=ListToArray(form.language)>
-
                 <tbody>
                     <cfif i EQ 1>
                         <tr>
@@ -133,7 +119,6 @@
                                 List Any Foreign Language(s) and check the boxes that describe your skills:
 
                                 <span style="float:right">   <a href="javascript:void(0);" class="addCF2">Add Language</a> </span>
-
                             </th>
                         </tr>
                     </cfif>
@@ -148,9 +133,7 @@
                         </td>
                     </tr>
                 </tbody>
-
         </table>
-
         <br>
         <table class="table table-bordered table-sm">
             <thead>
@@ -159,37 +142,25 @@
                 </tr>
             </thead>
             <tbody>
-
                 <tr>
                     <th colspan="5" width="33%">List any other skills, experience or knowledge you have relating to the position applied for:</th>
                 </tr>
                 <tr>
                     <td width="33%">
-                        <textarea rows="5" cols="140" name="training_comments"></textarea>
+                        <textarea rows="5" cols="140" name="training_comments" id="training_comments"></textarea>
                     </td>
                 </tr>
-
             </tbody>
         </table>
         <br>
         <h2>Employment History:</h2>
-
         <table class="table table-bordered table-sm" id="customFields_emp">
-
-
-
-
-
-
-
             <thead>
-
             </thead>
             <tbody>
                 <tr valign="top">
                     <th class="section1" colspan="5"><label for="customFieldName3">Company</label></th>
                 </tr>
-
                 <tr>
                     <th width="12%">Name:</th>
                     <td width="33%" class="lastitem">
@@ -205,61 +176,57 @@
                     <th width="12%">Address:</th>
                     <td width="33%">
                         <input type="text" size="55" class="employment_address" name="employment_address_1" id="customFields_name" value="">
-
                     </td>
                 </tr>
                 <tr>
                     <th width="12%">Dates of Employement:</th>
                     <td width="33%">
-                        <input type="text" size="20" id="customFields_name" class="employement_date_from" name="employement_date_from_1" value="" />
+                        <input type="text" size="20" id="employement_date_from" class="employement_date_from" name="employement_date_from_1" value="" />
                         &nbsp;&nbsp;To: &nbsp;&nbsp;
-                        <input type="text" size="20" id="customFields_name" class="employement_date_to" name="employement_date_to_1" value="" />
-
+                        <input type="text" size="20" id="employement_date_to" class="employement_date_to" name="employement_date_to_1" value="" />
 
                     </td>
                 </tr>
-
-
                 <tr>
                     <th nowrap width="12%">Your Title and Department</th>
                     <td width="33%">
                         <input type="text" size="55" id="customFields_name" class="employement_title" name="employement_title_1" value="">
-
                     </td>
                 </tr>
                 <tr>
                     <th width="12%">Describe your Duties:</th>
                     <td width="33%">
                         <textarea rows="5" cols="90" id="customFields_name" class="employemnt_duties" name="employemnt_duties_1"></textarea>
-
                     </td>
                 </tr>
-
             </tbody>
-
         </table>
-
         <h2>Additional Notes:</h2>
-        <textarea rows="5" cols="130" name="additional_notes"> </textarea>
+        <textarea rows="5" cols="130" name="additional_notes" id="additional_notes"> </textarea>
         <br><br>
         <input type="checkbox" id="last_check" name="last_check" value="1"> <span style="background-color: #FFFF00;font-weight: bold;">cant submit without checking this.</span>
-
         <br>
         <br />
-        <input type="submit" name="Submit" value="Submit" onclick=" return validateForm()">
-
-
+        <input id="internalSubmit" type="submit" name="Submit" value="Submit">
+        <span id="LoadingStatus" style="color:red"></span>
+        <input id="totalCollege" type="hidden" value="1" />
+        <input id="totalEmployment" type="hidden" value="1" />
+        <input id="totalLanguage" type="hidden" value="1" />
     </div>
-
 </div>
-
 @section scripts {
-
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
-
     <script type="text/javascript">
+        var education = {};
+        $('#tblEducation input:radio').click(function () {
+            if (this.value == "Yes") {
+                education.Graduated = 'Yes';
+            }
+            else {
+                education.Graduated = 'No';
+            }
+        });
         $(document).ready(function () {
 
             $(".select2").select2({
@@ -275,7 +242,6 @@
         $(document).ready(function () {
             //for the college
             $(".addCF").click(function () {
-                // alert('test');
                 var firstRow = $("#customFields > tbody:first");
                 $("#customFields").append('<tbody>' + firstRow.html() + '</tbody>');
                 //Process data
@@ -326,9 +292,6 @@
                 $("#customFields_emp > tbody:last").find('.employement_date_to').attr('name', 'employement_date_to_' + position_emp.toString());
                 $("#customFields_emp > tbody:last").find('.employement_title').attr('name', 'employement_title_' + position_emp.toString());
                 $("#customFields_emp > tbody:last").find('.employemnt_duties').attr('name', 'employemnt_duties_' + position_emp.toString());
-
-
-
                 $("#totalEmployment").val(parseInt($("#totalEmployment").val()) + 1);
             });
             $("#customFields_emp").on('click', '.remCF3', function () {
@@ -353,9 +316,144 @@
             });
 
         });
+        $('#internalSubmit').on("click", function (e) {
+            var isValid = true;
+            //$('input[type="text"], textarea').each(function () {
+            //    if ($.trim($(this).val()) == '') {
+            //        isValid = false;
+            //        $(this).addClass('error');
+            //    }
+            //    else {
+            //        $(this).removeClass('error');
+            //    }
+            //});
+            isValid = true;
+            if (isValid == false)
+                e.preventDefault();
+            else {
+                $("#LoadingStatus").html("Form is submitting....");
+                var employee = {};
+                employee.PositionApplied = $('#position').val();
+                employee.Manager = $('#Txtmanager option:selected').text() == "select" ? employee.Manager =  "" : $('#Txtmanager option:selected').text();
+                employee.DateStarted = $('#datepicker').val();
+                employee.AdditionalNotes = $('#additional_notes').val();
+                employee.Comments = $('#training_comments').val();
+                //Education
+                education.Name = $('#education_name').val();
+                education.Subject = $('#education_subject').val();
+                education.CompletedYear = $('#education_completed_year').val();
+            
+                $('[name=education_gratuated_flag]').each(function () {
+                    var curr = $(this).get(0);
+                    if (curr.checked && curr.value == 'Yes') {
+                        education.Graduated = 'Yes';
+                        education.GraduatedDate = $('#education_gratuated_startdate').val();
+                    }
+                })
+                education.Degree = $('#education_degree').val();
+                if (!isEmpty(education))
+                    employee.Education = education;
+                //College
+                var colleges = new Array();
+                var totalCollegeCount = parseInt($('#totalCollege').val())
+                for (var i = 1; i < totalCollegeCount + 1; i++) {
+                    var college = {};
+                    college.Name = $('[name=college_name_' + i + ']').val();
+                    college.Subject = $('[name=college_course_' + i + ']').val();
+                    college.CompletedYear = $('[name=college_gratuated_' + i + ']').val();
+                    //college.Graduated = 'No';
+                    $('[name=college_gratuated_flag_' + i + ']').each(function () {
+                        var curr = $(this).get(0);
+                        if (curr.checked && curr.value == 'Yes') {
+                            college.Graduated = 'Yes';
+                            college.GraduatedDate = $('[name=gratuated_college_' + i + ']').val();
+                        }
+                        else if (curr.checked && curr.value == 'No') {
+                            college.Graduated = 'No';
+                            college.GraduatedDate = $('[name=gratuated_college_' + i + ']').val();
+                        }
+                    });
+                    college.Degree = $('[name=college_degree_' + i + ']').val();
+                    if (!isEmpty(college))
+                        colleges.push(college);
+                }
+                employee.Colleges = colleges;
+                //Language
+                var languages = new Array();
+                var totalLangCount = parseInt($('#totalLanguage').val())
+                for (var i = 1; i < totalLangCount + 1; i++) {
+                    var lanuage = {};
+                    lanuage.Name = $('[name=language_' + i + ']').val();
+                    lanuage.Skills = "";
+                    var speakSkill = $('[name=Speak_lan_' + i + ']').get(0);
+                    lanuage.Skills = lanuage.Skills == '' && speakSkill.checked ? 'Speak' : speakSkill.checked ? lanuage.Skills + ',Speak' : lanuage.Skills;
+                    var readSkill = $('[name=Read_lan_' + i + ']').get(0);
+                    lanuage.Skills = lanuage.Skills == '' && readSkill.checked ? 'Read' : readSkill.checked ? lanuage.Skills + ',Read' : lanuage.Skills;
+                    var writeSkill = $('[name=Write_lan_' + i + ']').get(0);
+                    lanuage.Skills = lanuage.Skills == '' && writeSkill.checked ? 'Write' : writeSkill.checked ? lanuage.Skills + ',Write' : lanuage.Skills;
+                    if (!isEmpty(lanuage))
+                        languages.push(lanuage);
+                }
+                employee.Languages = languages;
+                //Employment
+                var companies = new Array();
+                var totalEmploymentCount = parseInt($('#totalEmployment').val())
+                for (var i = 1; i < totalEmploymentCount + 1; i++) {
+                    var company = {}
+                    company.Name = $('[name=employement_name_' + i + ']').val();
+                    company.Address = $('[name=employment_address_' + i + ']').val();
+                    company.FromDate = $('[name=employement_date_from_' + i + ']').val();
+                    company.ToDate = $('[name=employement_date_to_' + i + ']').val();
+                    company.Department = $('[name=employement_title_' + i + ']').val();
+                    company.Description = $('[name=employemnt_duties_' + i + ']').val();
+                    if (!isEmpty(company))
+                        companies.push(company);
+                }
+                
+                employee.EmploymentHistory = companies;
 
+                console.log(employee);
+                var last_check = $('#last_check').get(0).checked;
+                if (last_check) {
+                    //Send the JSON array to Controller using AJAX.
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/Internalform",
+                        data: JSON.stringify(employee),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            $("#LoadingStatus").html(" ");
+                            response.DateStarted = ToJavaScriptDate(response.DateStarted);
+                            console.log(response);
+                            location.href = "/Home/FormRecords";
+                        }
+                    });
+                }
+            }
+        });
 
+        function ToJavaScriptDate(value) { //To Parse Date from the Returned Parsed Date
+            var pattern = /Date\(([^)]+)\)/;
+            var results = pattern.exec(value);
+            var dt = new Date(parseFloat(results[1]));
+            return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+        }
+        function isEmpty(obj) {
+            for (var prop in obj) {
+                if (obj.hasOwnProperty(prop) && !isNullOrWhiteSpace($(obj).prop(prop)))
+                    return false;
+            }
+
+            return true;
+        }
+        function isNullOrWhiteSpace(str) {
+            return (!str || str.length === 0 || /^\s*$/.test(str) || str === '')
+        }
+
+        function isEmptyObject(obj, prop) {
+
+        }
     </script>
 }
-
 

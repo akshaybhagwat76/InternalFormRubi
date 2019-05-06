@@ -1,0 +1,240 @@
+﻿@{
+    ViewBag.Title = "FormRecords";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Model = TempData["lstEmployee"] as InternalFormRubi.ViewModels.Employee;
+
+    var a = string.Empty;
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<style>
+
+
+    .section1 {
+        background-color: Highlight;
+        color: white;
+    }
+</style>
+<div class="card">
+    <div class="card-header">form</div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>position applying </th>
+                <td> @Model.PositionApplied </td>
+            </tr>
+            @if (!string.IsNullOrEmpty(Model.Manager))
+            {
+                    <tr>
+                        <th>Manager</th>
+                        <td>
+                            @Model.Manager
+                        </td>
+                    </tr>
+            }
+            <tr>
+                <th>Date started</th>
+                <td>
+                    @Model.DateStarted.ToLongDateString()
+                </td>
+            </tr>
+        </table>
+        @if (Model.Education != null)
+        {
+
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr><th colspan="2">Education</th></tr>
+
+                </thead>
+                <tr>
+                    <th>Name</th>
+                    <td> @Model.Education.Name </td>
+                </tr>
+                <tr>
+                    <th>Major course or subject</th>
+                    <td>@Model.Education.Subject </td>
+                </tr>
+                <tr>
+                    <th>Last year completed</th>
+                    <td>@Model.Education.CompletedYear</td>
+                </tr>
+                <tr>
+                    <th>Graduated?</th>
+                    <td>
+                        @Model.Education.Graduated
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Yes when -  Month/Year:
+                        @Model.Education.GraduatedDate
+                    </td>
+                </tr>
+                <tr>
+                    <th>degree?</th>
+                    <td>
+                        @Model.Education.Degree
+                    </td>
+                </tr>
+            </table>
+        }
+        @if (Model.Colleges != null && Model.Colleges.Count > 0)
+        {
+
+            foreach (var college in Model.Colleges)
+            {
+                <table class="table table-bordered" id="customFields">
+                    <tbody>
+                        <tr valign="top">
+                            <th class="section1" colspan="5"><label for="customFieldName">College</label></th>
+                        </tr>
+
+                        <tr>
+                            <th width="12%">   Name:</th>
+                            <td width="33%" class="lastitem">
+                                @college.Name
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="12%">Major Course or Subject:</th>
+                            <td width="33%">
+                                @college.Subject
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="12%">Last Year Completed:</th>
+                            <td width="33%">
+                                @college.CompletedYear
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="12%">Graduated?</th>
+                            <td width="33%">
+                                @college.Graduated
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Yes when -  Month/Year:
+                                @college.GraduatedDate
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="12%">Degree:</th>
+                            <td width="33%">
+                                @college.Degree
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            }
+        }
+
+        @if (Model.Languages != null && Model.Languages.Count > 0)
+        {
+
+
+            <table class="table table-sm table-bordered" id="customFields_lan">
+                <thead>
+                    <tr>
+                        <th class="section1" colspan="2">Languages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colspan="2">
+                            List Any Foreign Language(s) and check the boxes that describe your skills:
+                        </th>
+
+                    </tr>
+                    <tr>
+                        @foreach (var lang in Model.Languages)
+                        {
+                            <td>
+                                @lang.Name
+                                <br />
+                                @lang.Skills
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        }
+
+        <br>
+        @if (!string.IsNullOrEmpty(Model.Comments))
+        {
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th class="section1" colspan="5">Other</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colspan="5" width="33%">List any other skills, experience or knowledge you have relating to the position applied for:</th>
+                    </tr>
+                    <tr>
+                        <td width="33%">
+                            @Model.Comments
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+
+        <br>
+
+        @if (Model.EmploymentHistory != null && Model.EmploymentHistory.Count > 0)
+        {
+
+            foreach (var employemenet in Model.EmploymentHistory)
+            {
+                <h2>Employment History:</h2>
+                <table class="table table-bordered table-sm" id="customFields_emp">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr valign="top">
+                            <th class="section1" colspan="5"><label for="customFieldName3">Company</label></th>
+                        </tr>
+
+                        <tr>
+                            <th width="12%">Name:</th>
+                            <td width="33%" class="lastitem">
+                                @employemenet.Name
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="12%">Address:</th>
+                            <td width="33%">
+                                @employemenet.Address
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="12%">Dates of Employement:</th>
+                            <td width="33%">
+                                @employemenet.FromDate
+                                &nbsp;&nbsp;To: &nbsp;&nbsp;
+                                @employemenet.ToDate
+                            </td>
+                        </tr>
+                        <tr>
+                            <th nowrap width="12%">Your Title and Department</th>
+                            <td width="33%">
+                                @employemenet.Department
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="12%">Describe your Duties:</th>
+                            <td width="33%">
+                                @employemenet.Description
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            }
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.AdditionalNotes))
+        {
+                <h2>Additional Notes:</h2> @Model.AdditionalNotes 
+        }
+        <br><br>
+    </div>
+</div>
